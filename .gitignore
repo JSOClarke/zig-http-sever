@@ -1,0 +1,6 @@
+*.zig-cache/
+*./zig-cache/
+*.txt
+*.zig-cache
+*.zig-cache/z/
+.zig-cache/z/0de2bc7b8ecf843738d5e3b13139ce2e
