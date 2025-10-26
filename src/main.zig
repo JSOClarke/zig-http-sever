@@ -26,6 +26,7 @@ pub fn main() !void {
         // will open up a new socket that will handle/manage that connection.
 
         _ = try req.read_request(buffer[0..buffer.len], connection);
+        std.debug.print("Non parsed buffer: {s}", .{buffer});
         // const top_level = try req.parse_request_top_level_header(&buffer);
         // const response = "Hello from your black zig brother";
         try res.send200(connection);

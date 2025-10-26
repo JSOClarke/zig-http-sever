@@ -3,9 +3,9 @@
 | Routing - URL mapping | Map URLs to handler functions (/users, GET, POST, etc.) | |
 | Routing - Path parameters | Support path parameters like /users/:id | |
 | Routing - Query parameters | Optional support for query strings like ?page=2 | |
-| Request Handling - Method | Parse HTTP method (GET, POST, PUT, DELETE) | |
+| Request Handling - Method | Parse HTTP method (GET, POST, PUT, DELETE) | | -> Completed 
 | Request Handling - URL/Path | Parse the URL and path | |
-| Request Handling - Headers | Parse HTTP headers | |
+| Request Handling - Headers | Parse HTTP headers | | -> Started Near completion.
 | Request Handling - Body | Parse request body (JSON or form data) | |
 | Response Handling - Status codes | Return proper HTTP status codes (200, 404, 500) | |
 | Response Handling - Headers | Set response headers (Content-Type, Location) | |

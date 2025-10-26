@@ -45,21 +45,6 @@ test "test parse_request" {
     // std.debug.print("\nExpected, {any}\n", .{expected});
 }
 
-// test "test parse_request - FAILURE" {
-//     const buffer = "POSTs /path HTTP/1.1\r\nHost: example.com\r\n";
-
-//     const result = try parse_request_top_level_header(buffer);
-//     const expected = Request{ .method = Method.GET, .endpoint = "/path", .html_v = "HTTP/1.1" };
-//     // std.debug.print("\n Result, {any} \n", .{result});
-//     try std.testing.expectEqual(expected.method, result.method);
-//     try std.testing.expectEqualSlices(u8, expected.html_v, result.html_v);
-//     try std.testing.expectEqualSlices(u8, expected.endpoint, result.endpoint);
-
-//     // std.debug.print("\nExpected, {any}\n", .{expected});
-// }
-
-// parse the read buffer get the first line for our use caes
-
 const Request = struct {
     method: Method,
     endpoint: []const u8,
@@ -73,6 +58,9 @@ const MethodMap = Map(Method).initComptime(.{.{ "GET", Method.GET }});
 
 pub const Method = enum {
     GET,
+    POST,
+    PUT,
+    DELETE,
     pub fn init(queried_method: []const u8) !Method {
         return MethodMap.get(queried_method) orelse error.MethodNotValid;
     }
@@ -81,12 +69,12 @@ pub const Method = enum {
     }
 };
 
-test "test Method enum" {
+test "test Method.is_supported success" {
     const result = Method.is_supported("GET");
     try std.testing.expectEqual(true, result);
 }
 
-test "test Method Init - Success" {
+test "test Method.init - Success" {
     const result = try Method.init("GET");
 
     std.debug.print("Result, {}", .{result});
